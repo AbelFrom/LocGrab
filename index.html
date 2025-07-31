@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GPS Spy</title>
+    <script>
+      function collectIntel() {
+        const output = document.getElementById("output");
+        navigator.geolocation.getCurrentPosition(
+          (pos) => {
+            const lat = pos.coords.latitude;
+            const lon = pos.coords.longitude;
+            output.textContent = "Latitude: " + lat + "\nLongitude: " + lon;
+          },
+          (err) => {
+            output.textContent = "Error: " + err.message;
+          }
+        );
+      }
+    </script>
+  </head>
+  <body>
+    <button onclick="collectIntel()">Get Location</button>
+    <pre id="output"></pre>
+  </body>
+</html>
